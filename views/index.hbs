@@ -3,9 +3,22 @@
   <p>Search two baseball players and see how they are connected by teams.</p>
 
 </div>
-<form id='search'>
-  <h4>Enter Player First and Last Names</h4>
-  <input class="player1" type="text" placeholder="Player 1">
-  <input class="player2" type="text" placeholder="Player 2">
-  <button type='submit' class='submit-btn'>Search</button>
-</form>
+<div class="form-body">
+	<form method="POST" action="">
+	  <p>Enter Player First and Last Names</p>
+	  <div class="form-group row">
+	  	<div class="col-5">
+		  <input name="player1" type="text" class="form-control" placeholder="Player 1">
+		 </div>
+		 <div class="col-5">
+		  <input name="player2" type="text" class="form-control" placeholder="Player 2">
+		 </div>
+		 <div>
+		 	<input type="submit" class="btn btn-primary red" value="Submit">
+		 </div>
+	  </div>
+	  
+	</form>
+</div>
+
+<p>{{name}}</p>

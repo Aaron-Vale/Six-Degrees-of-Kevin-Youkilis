@@ -144,6 +144,14 @@ Papa.parse("https://raw.githubusercontent.com/Aaron-Vale/Six-Degrees-of-Kevin-Yo
       // }
     }
     console.log(g);
-    console.log(g.shortestPath(g.getNode('Dustin Pedroia'), g.getNode('Manny Ramirez')));
 	}
 });
+$(document).ready(function() {
+  $('.submit-btn').on('click',function() {
+    const arr = (g.shortestPath(g.getNode($('.p1').val()), g.getNode($('.p2').val())))
+    console.log(arr)
+    arr.forEach(function(node, index) {
+      document.querySelector('.results').innerHTML = node.value + '-->';
+    })
+  })
+})

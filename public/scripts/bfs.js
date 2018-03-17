@@ -151,7 +151,9 @@ $(document).ready(function() {
     const arr = (g.shortestPath(g.getNode($('.p1').val()), g.getNode($('.p2').val())))
     console.log(arr)
     arr.forEach(function(node, index) {
-      document.querySelector('.results').innerHTML = node.value + '-->';
+      if (index !== node.length - 1) {
+        $('.results').append('<h1>'+node.value + '-->'+'</h1>');
+      }
     })
   })
 })

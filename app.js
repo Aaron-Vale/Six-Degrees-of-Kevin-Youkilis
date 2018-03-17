@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var jsgraphs = require('js-graph-algorithms');
+
 
 var app = express();
 

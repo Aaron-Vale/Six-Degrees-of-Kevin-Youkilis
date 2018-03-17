@@ -148,12 +148,18 @@ Papa.parse("https://raw.githubusercontent.com/Aaron-Vale/Six-Degrees-of-Kevin-Yo
 });
 $(document).ready(function() {
   $('.submit-btn').on('click',function() {
+    $('.results').html('');
     const arr = (g.shortestPath(g.getNode($('.p1').val()), g.getNode($('.p2').val())))
-    console.log(arr)
+    console.log(arr.length)
+    $('.results').append('<h2 style="padding-top:20px;">'+ 'Degrees of Separation' + "</h2>");
     arr.forEach(function(node, index) {
-      if (index !== node.length - 1) {
-        $('.results').append('<h1>'+node.value + '-->'+'</h1>');
+      if (index+1 == arr.length) {
+        $('.results').append('<p style="padding-bottom:20px;">'+node.value+'</p>');
       }
+      else {
+        $('.results').append('<p>'+node.value + '-->'+'</p>');
+      }
+
     })
   })
 })

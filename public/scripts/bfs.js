@@ -105,14 +105,6 @@ Papa.parse("https://raw.githubusercontent.com/Aaron-Vale/Six-Degrees-of-Kevin-Yo
 	download: true,
   header: false,
 	complete: function(results) {
-		// for (let i = 0; i < results.data.length; i++) {
-    //   let node = results.data[i];
-    //   let name = node[1];
-    //   let team = `${node[2]} ${node[4]}`;
-		// 	if (name && team) {
-		// 		g.addVertex(name, team);
-		// 		g.addVertex(team, name);
-		// 	}
 
 		for (var i = 0; i < results.data.length; i++) {
 		  let node = results.data[i];
@@ -135,15 +127,7 @@ Papa.parse("https://raw.githubusercontent.com/Aaron-Vale/Six-Degrees-of-Kevin-Yo
 
 			teamNode.addEdge(playerNode);
 
-      // if(g.vertices[name]) {
-      //   g.addVertex(name, team);
-      //
-      // }
-      // if(!g.vertices[team]) {
-      //   g.addVertex(team, name);
-      // }
     }
-    console.log(g);
 	}
 });
 $(document).ready(function() {
@@ -161,5 +145,6 @@ $(document).ready(function() {
       }
 
     })
+    g.reset();
   })
 })

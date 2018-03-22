@@ -100,15 +100,15 @@ Papa.parse("https://raw.githubusercontent.com/Aaron-Vale/Six-Degrees-of-Kevin-Yo
 
 		for (var i = 0; i < results.data.length; i++) {
 		  let node = results.data[i];
-      let name = node[1];
+      let id = node[0];
       let team = `${node[2]} ${node[4]}`;
 			let playerNode;
 			let teamNode;
-			if (!g.getNode(name)) {
-				playerNode = new Node(name);
+			if (!g.getNode(id)) {
+				playerNode = new Node(id);
 				g.addNode(playerNode);
 			} else {
-				playerNode = g.getNode(name);
+				playerNode = g.getNode(id);
 			}
 			if (!g.getNode(team)) {
 				teamNode = new Node(team);
@@ -120,5 +120,6 @@ Papa.parse("https://raw.githubusercontent.com/Aaron-Vale/Six-Degrees-of-Kevin-Yo
 			teamNode.addEdge(playerNode);
 
     }
+    console.log(g)
 	}
 });

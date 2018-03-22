@@ -8,9 +8,11 @@ Papa.parse("https://raw.githubusercontent.com/Aaron-Vale/Six-Degrees-of-Kevin-Yo
 		for (let i = 0; i < results.data.length; i++) {
 			let node = results.data[i];
 			let id = node[0];
-			let years = `${node[1]} ${node[2]} ${node[3]}-${node[4]}`;
+			let name = `${node[1]} ${node[2]}`;
+			let years = `${node[1]} ${node[2]} (${node[3]}-${node[4]})`;
 
-			playerMap[id] = years;
+			playerMap[id] = name;
+			playerMap[years] = id;
 			playerArray.push(years);
 		}
 	}

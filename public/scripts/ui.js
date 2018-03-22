@@ -1,15 +1,24 @@
 $(document).ready(function() {
   $('.submit-btn').on('click',function() {
     $('.results').html('');
-    const arr = (g.shortestPath(g.getNode($('.p1').val()), g.getNode($('.p2').val())))
-    console.log(arr.length)
+    const p1 = playerMap[$('input.typeahead.tt-input.p1').val()];
+    const p2 = playerMap[$('input.typeahead.tt-input.p2').val()];
+
+    const arr = (g.shortestPath(g.getNode(p1), g.getNode(p2)));
     $('.results').append('<h2 style="padding-top:20px;">'+ 'Degrees of Separation' + "</h2>");
     arr.forEach(function(node, index) {
+      let mappedValue;
+
+      if (playerMap[node.value]) {
+        mappedValue = playerMap[node.value];      
+      } else {
+        mappedValue = node.value;
+      }
       if (index+1 == arr.length) {
-        $('.results').append('<p style="padding-bottom:20px;">'+node.value+'</p>');
+        $('.results').append('<p style="padding-bottom:20px;">'+mappedValue+'</p>');
       }
       else {
-        $('.results').append('<p>'+node.value + '-->'+'</p>');
+        $('.results').append('<p>'+mappedValue + '-->'+'</p>');
       }
 
     })

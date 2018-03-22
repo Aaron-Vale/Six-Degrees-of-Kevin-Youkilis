@@ -10,7 +10,7 @@ $(document).ready(function() {
       let mappedValue;
 
       if (playerMap[node.value]) {
-        mappedValue = playerMap[node.value];      
+        mappedValue = playerMap[node.value];
       } else {
         mappedValue = node.value;
       }
@@ -18,7 +18,7 @@ $(document).ready(function() {
         $('.results').append('<p style="padding-bottom:20px;">'+mappedValue+'</p>');
       }
       else {
-        $('.results').append('<p>'+mappedValue + '-->'+'</p>');
+        $('.results').append('<p>'+mappedValue + '<br><i class="fas fa-3x fa-long-arrow-alt-down"></i>'+'</p>');
       }
 
     })

@@ -73,14 +73,7 @@ Graph.prototype.shortestPath = function (start, finish) {
 		next = next.parent;
 	}
 
-	var txt = '';
-	for (var i = path.length - 1; i >= 0; i--) {
-		var n = path[i];
-		txt += n.value
-		if (i != 0) {
-			txt += ' --> '
-		};
-	}
+
 	return path
 };
 
@@ -99,7 +92,6 @@ Node.prototype.addEdge = function(neighbor) {
 }
 
 var g = new Graph();
-
 
 Papa.parse("https://raw.githubusercontent.com/Aaron-Vale/Six-Degrees-of-Kevin-Youkilis/master/data.csv", {
 	download: true,
@@ -130,21 +122,3 @@ Papa.parse("https://raw.githubusercontent.com/Aaron-Vale/Six-Degrees-of-Kevin-Yo
     }
 	}
 });
-$(document).ready(function() {
-  $('.submit-btn').on('click',function() {
-    $('.results').html('');
-    const arr = (g.shortestPath(g.getNode($('.p1').val()), g.getNode($('.p2').val())))
-    console.log(arr.length)
-    $('.results').append('<h2 style="padding-top:20px;">'+ 'Degrees of Separation' + "</h2>");
-    arr.forEach(function(node, index) {
-      if (index+1 == arr.length) {
-        $('.results').append('<p style="padding-bottom:20px;">'+node.value+'</p>');
-      }
-      else {
-        $('.results').append('<p>'+node.value + '-->'+'</p>');
-      }
-
-    })
-    g.reset();
-  })
-})

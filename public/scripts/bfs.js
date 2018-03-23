@@ -73,14 +73,7 @@ Graph.prototype.shortestPath = function (start, finish) {
 		next = next.parent;
 	}
 
-	var txt = '';
-	for (var i = path.length - 1; i >= 0; i--) {
-		var n = path[i];
-		txt += n.value
-		if (i != 0) {
-			txt += ' --> '
-		};
-	}
+
 	return path
 };
 
@@ -100,7 +93,6 @@ Node.prototype.addEdge = function(neighbor) {
 
 var g = new Graph();
 
-
 Papa.parse("https://raw.githubusercontent.com/Aaron-Vale/Six-Degrees-of-Kevin-Youkilis/master/data.csv", {
 	download: true,
   header: false,
@@ -108,15 +100,15 @@ Papa.parse("https://raw.githubusercontent.com/Aaron-Vale/Six-Degrees-of-Kevin-Yo
 
 		for (var i = 0; i < results.data.length; i++) {
 		  let node = results.data[i];
-      let name = node[1];
+      let id = node[0];
       let team = `${node[2]} ${node[4]}`;
 			let playerNode;
 			let teamNode;
-			if (!g.getNode(name)) {
-				playerNode = new Node(name);
+			if (!g.getNode(id)) {
+				playerNode = new Node(id);
 				g.addNode(playerNode);
 			} else {
-				playerNode = g.getNode(name);
+				playerNode = g.getNode(id);
 			}
 			if (!g.getNode(team)) {
 				teamNode = new Node(team);
@@ -128,23 +120,6 @@ Papa.parse("https://raw.githubusercontent.com/Aaron-Vale/Six-Degrees-of-Kevin-Yo
 			teamNode.addEdge(playerNode);
 
     }
+    console.log(g)
 	}
 });
-$(document).ready(function() {
-  $('.submit-btn').on('click',function() {
-    $('.results').html('');
-    const arr = (g.shortestPath(g.getNode($('.p1').val()), g.getNode($('.p2').val())))
-    console.log(arr.length)
-    $('.results').append('<h2 style="padding-top:20px;">'+ 'Degrees of Separation' + "</h2>");
-    arr.forEach(function(node, index) {
-      if (index+1 == arr.length) {
-        $('.results').append('<p style="padding-bottom:20px;">'+node.value+'</p>');
-      }
-      else {
-        $('.results').append('<p>'+node.value + '-->'+'</p>');
-      }
-
-    })
-    g.reset();
-  })
-})
